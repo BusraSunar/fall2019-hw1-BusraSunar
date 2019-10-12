@@ -62,9 +62,10 @@ public class App {
 
 
               String input4 = req.queryParams("input4").replaceAll("\\s","");
+              int input4AsInt = Integer.parseInt(input4);
               System.out.println(input4);
 
-              String result2 = operator(input4,inputList2);
+              String result2 = average(input4AsInt,inputList2);
 
               Map map = new HashMap();
               map.put("result", result);
@@ -91,30 +92,14 @@ public class App {
             return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
         }
 
-        static String operator(String operator, ArrayList<Integer> list) {
+        static String average(int n, ArrayList<Integer> list) {
           if (list == null || list.size() == 0) return "Input not found.";
           int result2;
-          switch (operator) {
-            case "+":
-              result2 = 0;
-              for (int i : list) {
-                result2 += i;
-              }
-              return "The sum of the integers in the list: "+result2;
-            case "-":
-              result2 = 0;
-              for (int i : list) {
-                result2 -= i;
-              }
-              return "The minus sum of the integers in the list: "+result2;
-            case "*":
-              result2 = 1;
-              for (int i : list) {
-                result2 *= i;
-              }
-              return "The multiply of the integers in the list: "+result2;
-            default:
-              return "Wrong operator input";
-          }
+          if (n>=list.size()) return "Input n is larger than array";
+          double sum=0;
+          for (int i=0;i<n;i++)
+              sum+=(double)list.get(i);
+          double average=sum/(double)list.size();
+          return "avrage of 0 to n is "+ average;
         }
     }
