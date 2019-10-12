@@ -94,12 +94,11 @@ public class App {
 
         static String average(int n, ArrayList<Integer> list) {
           if (list == null || list.size() == 0) return "Input not found.";
-          int result2;
           if (n>=list.size()) return "Input n is larger than array";
           double sum=0;
           for (int i=0;i<n-1;i++)
               sum+=(double)list.get(i);
-          double average=sum/(double)list.size();
+          double average=sum/(double)n;
           return "avrage of 0 to n is "+ average;
         }
     }
