@@ -94,7 +94,7 @@ public class App {
 
         static String average(int n, ArrayList<Integer> list) {
           if (list == null || list.size() == 0) return "Input not found.";
-          if (n>=list.size()) return "Input n is larger than array";
+          if (n>list.size()) return "Input n is larger than array";
           double sum=0;
           for (int i=0;i<n;i++)
               sum+=(double)list.get(i);
