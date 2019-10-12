@@ -96,7 +96,7 @@ public class App {
           if (list == null || list.size() == 0) return "Input not found.";
           if (n>=list.size()) return "Input n is larger than array";
           double sum=0;
-          for (int i=0;i<n-1;i++)
+          for (int i=0;i<n;i++)
               sum+=(double)list.get(i);
           double average=sum/(double)n;
           return "avrage of 0 to n is "+ average;
