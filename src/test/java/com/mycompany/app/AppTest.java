@@ -36,7 +36,8 @@ public class AppTest extends TestCase {
     public void testDivideByZero() {
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 0, 4));
         Boolean result = new App().divisible(array, 0);
-        assertEquals(java.util.Optional.of(false), result);
+        String tmp=""+result;
+        assertEquals("false", tmp);
     }
     public void testWrongInput() {
         ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
