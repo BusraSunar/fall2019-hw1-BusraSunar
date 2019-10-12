@@ -12,12 +12,15 @@ import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
 
 public class App {
-    public static boolean search(ArrayList<Integer> array, int e) {
+    public static boolean divisible(ArrayList<Integer> arr, int e) {
       System.out.println("inside search");
-      if (array == null) return false;
-
-      for (int elt : array) {
-        if (elt == e) return true;
+      if (arr == null) return false;
+        double result=0;
+      for (int elt : arr) {
+          double tmp=e;
+          result=(double)elt/tmp;
+          if (result==(elt/e))
+              return true;
       }
       return false;
     }
@@ -29,7 +32,6 @@ public class App {
 
             post("/compute", (req, res) -> {
 
-// INPUT LIST
               String input1 = req.queryParams("input1");
               java.util.Scanner sc1 = new java.util.Scanner(input1);
               sc1.useDelimiter("[;\r\n]+");
@@ -40,15 +42,13 @@ public class App {
                 inputList.add(value);
               }
               System.out.println(inputList);
-// END OF INPUT LIST
+
 
               String input2 = req.queryParams("input2").replaceAll("\\s","");
               int input2AsInt = Integer.parseInt(input2);
 
-              boolean result = App.search(inputList, input2AsInt);
+              boolean result = App.divisible(inputList, input2AsInt);
 
-
-// INPUT LIST 2
               String input3 = req.queryParams("input3");
               java.util.Scanner sc2 = new java.util.Scanner(input3);
               sc2.useDelimiter("[;\r\n]+");
@@ -59,7 +59,7 @@ public class App {
                 inputList2.add(value);
               }
               System.out.println(inputList2);
-// END OF INPUT LIST 2
+
 
               String input4 = req.queryParams("input4").replaceAll("\\s","");
               System.out.println(input4);
@@ -71,7 +71,7 @@ public class App {
               map.put("result2", result2);
               return new ModelAndView(map, "compute.mustache");
             }, new MustacheTemplateEngine());
-// END OF POST
+
 
             get("/compute",
                 (rq, rs) -> {
