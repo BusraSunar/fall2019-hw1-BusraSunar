@@ -14,6 +14,8 @@ import spark.template.mustache.MustacheTemplateEngine;
 public class App {
     public static boolean divisible(ArrayList<Integer> arr, int e) {
       System.out.println("inside search");
+      //if you try to divide by zero it will return false
+      if (e==0) return false;
       if (arr == null) return false;
         double result=0;
       for (int elt : arr) {
